@@ -1,0 +1,18 @@
+[project]
+name = "ledger-drip"
+version = "0.1.0"
+description = "DRIP MVP CLI for identity and artifact signing"
+requires-python = ">=3.10"
+
+[project.scripts]
+drip = "drip.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

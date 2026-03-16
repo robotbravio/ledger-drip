@@ -2,6 +2,30 @@
 
 DRIP is a **hardware-backed decentralized identity and artifact-signing protocol** for researchers, developers, and security workflows, using Ledger as the root of trust.
 
+
+## Working MVP CLI (implemented)
+
+This repository now includes a runnable DRIP MVP CLI in `src/drip/cli.py`.
+
+### Capabilities
+
+- initialize local DRIP state (`drip init`),
+- create/show a local identity (`drip identity create`, `drip identity show`),
+- sign files into portable proof bundles (`drip sign-file`),
+- verify files against proof bundles (`drip verify-file`).
+
+### Quickstart
+
+```bash
+python -m pip install -e .
+drip init
+drip identity create alice
+drip sign-file ./report.md --identity alice --artifact-type vuln-report --out ./report.proof.json
+drip verify-file ./report.md --proof ./report.proof.json
+```
+
+> Note: this MVP uses local software keys via OpenSSL for development flow simulation. Ledger hardware transport/signing integration is the next step.
+
 ## Why DRIP exists
 
 Modern security and software workflows depend on signatures, but most signatures are still generated from software keys on laptops, CI agents, or cloud services. DRIP aims to improve this by making a Ledger device the root signing authority for identity and artifact proofs.
